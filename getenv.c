@@ -2,7 +2,8 @@
 
 /**
  * get_environ - returns the string array copy of our environment
- * @info: Structure containing potential argumentsused to maintain constant function prototype.
+ * @info: Structure containing potential arguments used to
+ * maintain constant function prototype.
  * Return: Must be 0
  */
 char **get_environ(info_t *info)
@@ -18,7 +19,8 @@ char **get_environ(info_t *info)
 
 /**
  * _unsetenv - Remove an environment variable
- * @info: Structure containing potential argumentsused to maintain constant function prototype.
+ * @info: Structure containing potential arguments used to
+ * maintain constant function prototype.
  * Return: 1 on delete, else 0
  * @var: the string environment variable property
  */
@@ -36,7 +38,7 @@ int _unsetenv(info_t *info, char *var)
 		p = starts_with(node->str, var);
 		if (p && *p == '=')
 		{
-			info->env_changed = delete_node_at_index(&(info->env), i);
+		info->env_changed = delete_node_at_index(&(info->env), i);
 			i = 0;
 			node = info->env;
 			continue;
@@ -49,7 +51,8 @@ int _unsetenv(info_t *info, char *var)
 
 /**
  * _setenv - to set up a new environment variable or modify an existing one
- * @info: Structure containing potential argumentsused to maintain constant function prototype.
+ * @info: Structure containing potential arguments used to
+ * maintain constant function prototype.
  * @var: the string environment variable property
  * @value: the string environment variable value
  *  Return: Must be 0

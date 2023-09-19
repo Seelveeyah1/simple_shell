@@ -101,7 +101,8 @@ int read_history(info_t *info)
 
 /**
  * build_history_list - to add entry to a history linked list
- * @info: Structure containing potential argumentsused to maintain constant function prototype
+ * @info: Structure containing potential arguments used to
+ * maintain constant function prototype
  * @buf: buffer
  * @linecount: history linecount, history count
  * Return: Must be 0
@@ -121,7 +122,8 @@ int build_history_list(info_t *info, char *buf, int linecount)
 
 /**
  * renumber_history - renumbers the history linked list after changes
- * @info: Structure containing potential argumentsused to maintain constant function prototype
+ * @info: Structure containing potential arguments used to
+ * maintain constant function prototype
  * Return: the new history count
  */
 int renumber_history(info_t *info)

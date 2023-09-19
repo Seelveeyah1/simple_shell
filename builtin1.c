@@ -1,8 +1,10 @@
 #include "shell.h"
 
 /**
- * _myhistory - to display the history list, one command by line, begining with line numbers starting at 0.
- * @info: Structure containing potential argument used to maintain constant function prototype.
+ * _myhistory - to display the history list, one command by
+ * line, begining with line numbers starting at 0.
+ * @info: Structure containing potential argument used to
+ * maintain constant function prototype.
  * Return: Must be 0
  */
 int _myhistory(info_t *info)
@@ -77,7 +79,8 @@ int print_alias(list_t *node)
 
 /**
  * _myalias - to copy alias builtin (man alias)
- * @info: Structure containing potential arguments used to maintain constant function prototype.
+ * @info: Structure containing potential arguments used
+ * to maintain constant function prototype.
  * Return: Must be 0
  */
 int _myalias(info_t *info)
