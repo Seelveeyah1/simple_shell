@@ -1,5 +1,4 @@
 #include "shell.h"
-#include "string1.c"
 
 /**
  * is_chain - to test if the current character in the
