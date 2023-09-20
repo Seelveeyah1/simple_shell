@@ -1,10 +1,17 @@
 #include "shell.h"
 
 /**
- * hsh - Our main shell loop
- * @info: the parameter & return information structure
- * @av: the argument vector from main()
- * Return: 0 on success, 1 on error, or error code
+ * hsh - Main shell loop for executing commands.
+ * @info: Pointer to the information structure.
+ * @av: Argument vector from main().
+ *
+ * This function is the main shell loop responsible for handling user commands.
+ * It repeatedly clears the information structure, displays a prompt if running
+ * interactively, reads user input, and processes the input by either finding
+ * built-in commands or external commands. It also manages memory and exits the
+ * shell when necessary.
+ *
+ * Return: 0 on success, 1 on error, or an error code.
  */
 int hsh(info_t *info, char **av)
 {
@@ -13,36 +20,52 @@ int hsh(info_t *info, char **av)
 
 	while (r != -1 && builtin_ret != -2)
 	{
-	clear_info(info);
-	}
-	if (interactive(info))
-	{
-		_puts("$ ");
+		clear_info(info);
+
+		/* Display the shell prompt if running interactively */
+		if (interactive(info))
+			_puts("$ ");
+
 		_eputchar(BUF_FLUSH);
+
+		/* Read user input */
 		r = get_input(info);
-	}
-	if (r != -1)
-	{
-		set_info(info, av);
-		builtin_ret = find_builtin(info);
-		if (builtin_ret == -1)
-			find_cmd(info);
-	}
-	else if (interactive(info))
-		_putchar('\n');
+
+		if (r != -1)
+		{
+			set_info(info, av);
+			builtin_ret = find_builtin(info);
+
+/* If not a built-in command, find and execute external command */
+			if (builtin_ret == -1)
+				find_cmd(info);
+		}
+		else if (interactive(info))
+			_putchar('\n');
+
+		/* Free allocated memory */
 		free_info(info, 0);
 	}
+
+	/* Write shell history */
 	write_history(info);
+
+	/* Free memory and exit the shell */
 	free_info(info, 1);
 
+/* Handle non-interactive mode and specific exit conditions */
 	if (!interactive(info) && info->status)
 		exit(info->status);
+
 	if (builtin_ret == -2)
 	{
+		/* Handle specific error conditions */
 		if (info->err_num == -1)
 			exit(info->status);
+
 		exit(info->err_num);
 	}
+
 	return (builtin_ret);
 }
 
